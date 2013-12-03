@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block main %}
+  <div style=text-align:center;font-size:large;vertical-align:middle;margin-top:50px>
+    {% if is_up %}
+      OGD_API is <span style=color:green>UP</span>
+    {% else %}
+      OGD is <span style=color:red>DOWN</span> with status code {{ status_code }}
+    {% endif %}
+  </div>
+{% endblock %}

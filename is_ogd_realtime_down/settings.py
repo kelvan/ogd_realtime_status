@@ -37,16 +37,34 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'is_ogd_realtime_down',
 )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 )
+
+# List of callables that know how to import templates from various sources.
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+#     'django.template.loaders.eggs.Loader',
+)
+
+TEMPLATE_DIRS = (
+    # Put strings here, like "/home/html/django_templates" or
+    # "C:/www/django/templates".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(BASE_DIR, 'templates'),
+) 
 
 ROOT_URLCONF = 'is_ogd_realtime_down.urls'
 
@@ -88,9 +106,10 @@ CACHES = {
         'LOCATION': 'unix:/tmp/memcached.sock',
     }
 }
+CACHE_MIDDLEWARE_SECONDS = 60 * 10
 
 API_KEY = keys.API
 RBL = 116
-OGD_URL = 'http://www.wienerlinien.at/ogd_realtime/monitor'
+OGD_URL = 'http://www.wienerlinien.at/ogd_realtime'
 
 TEST_URL = "%s/monitor?sender=%s&rbl=%d" % (OGD_URL, API_KEY, RBL)

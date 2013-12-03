@@ -5,7 +5,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'is_ogd_realtime_down.views.home', name='home'),
+    url(r'^$', 'is_ogd_realtime_down.views.is_down_again', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
