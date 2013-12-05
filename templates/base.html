@@ -1,7 +1,14 @@
 <html>
   <head>
+    {% block head %}
+    {% endblock %}
+    <title>
+      {% block title %}
+        Is OGD Realtime API up
+      {% endblock%}
+    </title>
   <head/>
-  <body>
+  <body bgcolor="silver">
     {% block main %}
     {% endblock %}
   </body>
