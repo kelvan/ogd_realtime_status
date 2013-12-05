@@ -100,12 +100,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+#CACHES = {
+#    'default': {
+#        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+#        'LOCATION': 'unix:/tmp/memcached.sock',
+#    }
+#}
 CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': 'unix:/tmp/memcached.sock',
-    }
-}
+     'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '/tmp/ogd_down_cache',
+     }
+ }
 CACHE_MIDDLEWARE_SECONDS = 60 * 10
 
 API_KEY = keys.API
