@@ -12,5 +12,9 @@ def is_down_again(request):
     if r.status_code == 200:
         if not 'timeRealtime' in r.content:
             d['is_up'] = None
+            if 'timePlanned' in r.content:
+                d['description'] = 'Realtime down'
+            else:
+                d['description'] = 'something not right, fix something'
 
     return render(request, 'home.html', d)

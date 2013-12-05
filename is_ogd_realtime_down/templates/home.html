@@ -8,6 +8,9 @@
       OGD is <span style=color:red>DOWN</span> with status code {{ status_code }}
     {% else %}
       OGD is <span style=color:yellow>PARTLY UP</span>
+      {% if description %}
+        <p style=font-size:medium>({{ description }})</p>
+      {% endif %}
     {% endif %}
   </div>
 {% endblock %}
