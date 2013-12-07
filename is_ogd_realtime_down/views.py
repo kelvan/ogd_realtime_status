@@ -10,7 +10,7 @@ def is_down_again(request):
     d = {'is_up': r.status_code == 200, 'status_code': r.status_code}
 
     if r.status_code == 200:
-        if not 'timeRealtime' in r.content:
+        if not 'timeReal' in r.content:
             d['is_up'] = None
             if 'timePlanned' in r.content:
                 d['description'] = 'Realtime down'
