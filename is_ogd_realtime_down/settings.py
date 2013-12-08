@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '=mcv6&t&*b_qg1q23s&7^0wr3ra@z3!o0c@$79_t!m4((8&kxj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = DEBUG
 
@@ -121,6 +121,6 @@ OGD_URL = 'http://www.wienerlinien.at/ogd_realtime'
 REALTIME_TEST_URL = "%s/monitor?sender=%s&rbl=%d" % (OGD_URL, API_KEY, RBL)
 
 try:
-    import settings_local
+    from settings_local import *
 except ImportError:
     pass
