@@ -115,7 +115,7 @@ CACHES = {
 CACHE_MIDDLEWARE_SECONDS = 60 * 10
 
 API_KEY = keys.API
-RBL = 116
+RBL = 211
 OGD_URL = 'http://www.wienerlinien.at/ogd_realtime'
 
 TEST_URL = "%s/monitor?sender=%s&rbl=%d" % (OGD_URL, API_KEY, RBL)

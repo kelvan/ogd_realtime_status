@@ -1,5 +1,6 @@
 keys.py
 settings_local.py
+env
 *~
 *.pyc
 __pycache__
