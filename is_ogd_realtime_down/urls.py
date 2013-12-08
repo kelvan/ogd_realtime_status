@@ -9,5 +9,5 @@ urlpatterns = patterns('',
     url(r'^json$', 'is_ogd_realtime_down.views.is_up_json', name='is_up_json'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^admin/', include(admin.site.urls)),
+    #url(r'^admin/', include(admin.site.urls)),
 )
