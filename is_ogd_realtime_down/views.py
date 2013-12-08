@@ -1,20 +1,29 @@
 import requests
-import settings
+from . import settings
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.cache import cache_page
+import json
 
-@cache_page(15 * 60)
-def is_down_again(request):
+def _test_request():
     r = requests.get(settings.TEST_URL)
     d = {'is_up': r.status_code == 200, 'status_code': r.status_code}
 
     if r.status_code == 200:
-        if not 'timeReal' in r.content:
+        if not 'timeReal' in str(r.content):
             d['is_up'] = None
             if 'timePlanned' in r.content:
                 d['description'] = 'Realtime down'
             else:
                 d['description'] = 'something not right, fix something'
 
+    return d
+
+@cache_page(15 * 60)
+def is_up(request):
+    d = _test_request()
     return render(request, 'home.html', d)
+
+@cache_page(15 * 60)
+def is_up_json(request):
+    return HttpResponse(json.dumps(_test_request()), 'application/json')
