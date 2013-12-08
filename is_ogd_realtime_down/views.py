@@ -8,11 +8,12 @@ import json
 def _test_request():
     r = requests.get(settings.TEST_URL)
     d = {'is_up': r.status_code == 200, 'status_code': r.status_code}
+    content = str(r.content)
 
     if r.status_code == 200:
-        if not 'timeReal' in str(r.content):
+        if not 'timeReal' in content:
             d['is_up'] = None
-            if 'timePlanned' in r.content:
+            if 'timePlanned' in content:
                 d['description'] = 'Realtime down'
             else:
                 d['description'] = 'something not right, fix something'

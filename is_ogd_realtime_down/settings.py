@@ -23,7 +23,7 @@ SECRET_KEY = '=mcv6&t&*b_qg1q23s&7^0wr3ra@z3!o0c@$79_t!m4((8&kxj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = []
 
@@ -119,3 +119,8 @@ RBL = 116
 OGD_URL = 'http://www.wienerlinien.at/ogd_realtime'
 
 TEST_URL = "%s/monitor?sender=%s&rbl=%d" % (OGD_URL, API_KEY, RBL)
+
+try:
+    import settings_local
+except ImportError:
+    pass
