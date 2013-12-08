@@ -118,7 +118,7 @@ API_KEY = keys.API
 RBL = 211
 OGD_URL = 'http://www.wienerlinien.at/ogd_realtime'
 
-TEST_URL = "%s/monitor?sender=%s&rbl=%d" % (OGD_URL, API_KEY, RBL)
+REALTIME_TEST_URL = "%s/monitor?sender=%s&rbl=%d" % (OGD_URL, API_KEY, RBL)
 
 try:
     import settings_local
